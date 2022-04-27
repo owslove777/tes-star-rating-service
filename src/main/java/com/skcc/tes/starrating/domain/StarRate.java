@@ -10,7 +10,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Entity
+@Entity(name = "star_rate")
+@Table(name = "star_rate")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -18,7 +19,7 @@ import java.util.Date;
 @Builder
 public class StarRate {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;		// 관리번호
 	Long talentCategoryId;	// 재능 카테고리 아이디
 	Double rate;	// 평점
