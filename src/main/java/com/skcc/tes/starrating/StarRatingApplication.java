@@ -1,6 +1,6 @@
 package com.skcc.tes.starrating;
 
-import com.skcc.tes.starrating.event.kafka.KafkaProcessor;
+import com.skcc.tes.starrating.infrastructure.adapters.kafka.KafkaProcessor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;

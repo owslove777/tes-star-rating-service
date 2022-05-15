@@ -84,6 +84,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
+		<!--Mapper -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.4.2.Final</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

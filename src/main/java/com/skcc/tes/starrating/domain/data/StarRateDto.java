@@ -1,4 +1,4 @@
-package com.skcc.tes.starrating.dto;
+package com.skcc.tes.starrating.domain.data;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

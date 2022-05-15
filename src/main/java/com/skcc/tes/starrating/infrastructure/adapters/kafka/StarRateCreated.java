@@ -1,4 +1,4 @@
-package com.skcc.tes.starrating.event;
+package com.skcc.tes.starrating.infrastructure.adapters.kafka;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StarRateCreated extends AbstractEvent{
+public class StarRateCreated extends AbstractKafkaEventAdapter {
     private String status; // created
     private Long starRateId;
     private Double rate;

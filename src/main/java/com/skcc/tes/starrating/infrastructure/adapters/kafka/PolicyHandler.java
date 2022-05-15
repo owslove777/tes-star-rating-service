@@ -1,7 +1,7 @@
-package com.skcc.tes.starrating.event;
+package com.skcc.tes.starrating.infrastructure.adapters.kafka;
 
 
-import com.skcc.tes.starrating.event.kafka.KafkaProcessor;
+import com.skcc.tes.starrating.infrastructure.adapters.kafka.KafkaProcessor;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;

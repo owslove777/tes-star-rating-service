@@ -1,14 +1,13 @@
-package com.skcc.tes.starrating.domain;
+package com.skcc.tes.starrating.infrastructure.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.skcc.tes.starrating.dto.StarRateDto;
-import com.skcc.tes.starrating.event.StarRateCreated;
+import com.skcc.tes.starrating.domain.data.StarRateDto;
+import com.skcc.tes.starrating.infrastructure.adapters.kafka.StarRateCreated;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity(name = "star_rate")
 @Table(name = "star_rate")
@@ -46,13 +45,13 @@ public class StarRate {
 
 	@PostPersist
 	public void onPostPersist(){
-		StarRateCreated petReserved = StarRateCreated.builder()
+		StarRateCreated starRateCreated = StarRateCreated.builder()
 				.status("CREATED")
 				.starRateId(id)
 				.comment(comment)
 				.rate(rate)
 				.talentCategoryId(talentCategoryId)
 				.build();
-		petReserved.publishAfterCommit();
+		starRateCreated.publishAfterCommit();
 	}
 }
