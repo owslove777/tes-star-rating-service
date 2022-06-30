@@ -36,5 +36,5 @@ spring:
     password: admin
     driverClassName: com.mysql.cj.jdbc.Driver
 
-server:
-  port: 8082
+#  server:
+#    port: 30120

@@ -1,17 +1,19 @@
 package com.skcc.tes.starrating.domain.ports.spi;
 
 import com.skcc.tes.starrating.domain.data.StarRateDto;
+import com.skcc.tes.starrating.infrastructure.entity.StarRate;
 
 import java.util.List;
 
 public interface StarRatePersistencePort {
-    StarRateDto addStarRate(StarRateDto src);
 
-    void deleteStarRateById(Long id);
+      StarRateDto addStarRate(StarRateDto src);
 
-    StarRateDto updateStarRate(StarRateDto src);
+      Boolean deleteStarRateById(Long id);
 
-    List<StarRateDto> getStarRates();
+//    StarRate updateStarRate(StarRate src);
 
-    StarRateDto getStarRateById(Long id);
+      List<StarRateDto> getStarRates();
+
+      StarRateDto getStarRateById(Long id);
 }

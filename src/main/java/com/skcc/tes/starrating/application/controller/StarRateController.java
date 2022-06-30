@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin( methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.OPTIONS})
 public class StarRateController {
 
 //    private final StarRateRepository repository;
@@ -36,5 +37,10 @@ public class StarRateController {
     @GetMapping("/star-rate/{id}")
     public StarRateDto getStarRateById(@PathVariable Long id) {
         return starRateServicePort.getStarRateById(id);
+    }
+
+    @DeleteMapping("/star-rate/{id}")
+    public Boolean  deleteStarRate(@PathVariable Long id){
+        return starRateServicePort.deleteStarRateById(id);
     }
 }

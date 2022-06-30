@@ -14,5 +14,6 @@ public class StarRateCreated extends AbstractKafkaEventAdapter {
     private Long starRateId;
     private Double rate;
     private String comment;
-    private Long talentCategoryId;
+    private Long talentId;
+    private String title;   // 재능명
 }

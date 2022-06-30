@@ -5,13 +5,15 @@ import com.skcc.tes.starrating.domain.data.StarRateDto;
 import java.util.List;
 
 public interface StarRateServicePort {
-    StarRateDto addStarRate(StarRateDto src);
+      StarRateDto addStarRate(StarRateDto src);
 
-    void deleteStarRateById(Long id);
+      Boolean deleteStarRateById(Long id);
 
-    StarRateDto updateStarRate(StarRateDto bookDto);
+//    StarRateDto updateStarRate(StarRateDto bookDto);
+//
+      List<StarRateDto> getStarRates();
 
-    List<StarRateDto> getStarRates();
+      StarRateDto getStarRateById(Long Id);
 
-    StarRateDto getStarRateById(Long bookId);
+
 }

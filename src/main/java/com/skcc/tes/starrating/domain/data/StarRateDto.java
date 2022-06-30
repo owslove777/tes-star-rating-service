@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
 @Setter
 public class StarRateDto {
     Long id;		// 관리번호
-    Long talentCategoryId;	// 재능 카테고리 아이디
+    Long talentId;	// 재능  아이디
+    String title;   // 재능명
     Double rate;	// 평점
     String comment;
 

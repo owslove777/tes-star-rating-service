@@ -1,13 +1,18 @@
 package com.skcc.tes.starrating.infrastructure.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.skcc.tes.starrating.StarRatingApplication;
 import com.skcc.tes.starrating.domain.data.StarRateDto;
 import com.skcc.tes.starrating.infrastructure.adapters.kafka.StarRateCreated;
+import com.skcc.tes.starrating.infrastructure.repository.StarRateRepository;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity(name = "star_rate")
 @Table(name = "star_rate")
@@ -20,7 +25,14 @@ public class StarRate {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;		// 관리번호
-	Long talentCategoryId;	// 재능 카테고리 아이디
+
+	@Column(nullable = false)
+	Long talentId;	// 재능 카테고리 아이디
+
+	@Column(nullable = false)
+	String title;   // 재능명
+
+	@Column(nullable = false)
 	Double rate;	// 평점
 	String comment;
 
@@ -35,12 +47,36 @@ public class StarRate {
 	public StarRateDto toDto() {
 		return StarRateDto.builder()
 				.id(id)
-				.talentCategoryId(talentCategoryId)
+				.talentId(talentId)
+				.title(title)
 				.comment(comment)
 				.rate(rate)
 				.serviceDate(serviceDate)
 				.rateDate(rateDate)
 				.build();
+	}
+	public static StarRate toDto(StarRateDto starRateDto) {
+		return StarRate.builder()
+				.id(starRateDto.getId())
+				.talentId(starRateDto.getTalentId())
+				.title(starRateDto.getTitle())
+				.comment(starRateDto.getComment())
+				.rate(starRateDto.getRate())
+				.serviceDate(starRateDto.getServiceDate())
+				.rateDate(starRateDto.getRateDate())
+				.build();
+	}
+
+
+	public static List<StarRateDto> toDtoList(List<StarRate> list) {
+		return list.stream().map(StarRate::toDto).collect(Collectors.toList());
+	}
+
+
+	public StarRateDto save() {
+		StarRateRepository repository = StarRatingApplication.getApplicationContext().getBean(StarRateRepository.class);
+		StarRate saved = repository.save(this);
+		return saved.toDto();
 	}
 
 	@PostPersist
@@ -50,7 +86,8 @@ public class StarRate {
 				.starRateId(id)
 				.comment(comment)
 				.rate(rate)
-				.talentCategoryId(talentCategoryId)
+				.talentId(talentId)
+				.title(title)
 				.build();
 		starRateCreated.publishAfterCommit();
 	}

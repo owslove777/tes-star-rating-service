@@ -11,11 +11,11 @@ import java.util.List;
 public interface StarRateMapper {
     StarRateMapper INSTANCE = Mappers.getMapper(StarRateMapper.class);
 
-    StarRateDto starRateToStarRateDto(StarRate book);
+    StarRateDto starRateToStarRateDto(StarRate starRate);
 
-    StarRate starRateDtoToStarRate(StarRateDto bookDto);
+    StarRate starRateDtoToStarRate(StarRateDto starRateDto);
 
-    List<StarRateDto> starRateListToStarRateDtoList(List<StarRate> bookList);
+    List<StarRateDto> starRateListToStarRateDtoList(List<StarRate> starRateList);
 
-    List<StarRate> starRateDtoListToStarRateList(List<StarRateDto> BookDtoList);
+    List<StarRate> starRateDtoListToStarRateList(List<StarRateDto> starRateDtoList);
 }

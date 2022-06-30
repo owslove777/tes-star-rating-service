@@ -8,6 +8,7 @@ import java.util.List;
 public class StarRateServiceImpl implements StarRateServicePort{
 
     private StarRatePersistencePort starRatePersistencePort;
+
     public StarRateServiceImpl(StarRatePersistencePort starRatePersistencePort) {
         this.starRatePersistencePort = starRatePersistencePort;
     }
@@ -18,15 +19,17 @@ public class StarRateServiceImpl implements StarRateServicePort{
     }
 
     @Override
-    public void deleteStarRateById(Long id) {
-        starRatePersistencePort.deleteStarRateById(id);
+    public Boolean deleteStarRateById(Long id) {
+
+        return starRatePersistencePort.deleteStarRateById(id);
+
     }
 
-    @Override
-    public StarRateDto updateStarRate(StarRateDto src) {
-        return starRatePersistencePort.updateStarRate(src);
-    }
-
+//    @Override
+//    public StarRateDto updateStarRate(StarRateDto src) {
+//        return starRatePersistencePort.updateStarRate(src);
+//    }
+//
     @Override
     public List<StarRateDto> getStarRates() {
         return starRatePersistencePort.getStarRates();

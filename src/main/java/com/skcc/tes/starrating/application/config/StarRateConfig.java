@@ -10,12 +10,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StarRateConfig {
     @Bean
-    public StarRatePersistencePort bookPersistence(){
+    public StarRatePersistencePort starRatePersistence(){
         return new StarRateJpaAdapter();
     }
 
     @Bean
-    public StarRateServicePort bookService(){
-        return new StarRateServiceImpl(bookPersistence());
+    public StarRateServicePort starRateService(){
+        return new StarRateServiceImpl(starRatePersistence());
     }
 }
