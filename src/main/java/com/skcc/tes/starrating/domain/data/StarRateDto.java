@@ -18,6 +18,9 @@ public class StarRateDto {
     Double rate;	// 평점
     String comment;
 
+    Long requestUserId; // 요청자 ID
+    Long sellerId;      // 판매자 ID
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     LocalDateTime serviceDate;	// 서비스 일자

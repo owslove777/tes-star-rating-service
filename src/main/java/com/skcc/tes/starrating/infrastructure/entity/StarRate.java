@@ -36,6 +36,12 @@ public class StarRate {
 	Double rate;	// 평점
 	String comment;
 
+	@Column(nullable = false)
+	Long requestUserId;
+
+	@Column(nullable = false)
+	Long sellerId;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	LocalDateTime serviceDate;	// 서비스 일자
@@ -53,6 +59,8 @@ public class StarRate {
 				.rate(rate)
 				.serviceDate(serviceDate)
 				.rateDate(rateDate)
+				.requestUserId(requestUserId)
+				.sellerId(sellerId)
 				.build();
 	}
 	public static StarRate toDto(StarRateDto starRateDto) {
@@ -64,6 +72,8 @@ public class StarRate {
 				.rate(starRateDto.getRate())
 				.serviceDate(starRateDto.getServiceDate())
 				.rateDate(starRateDto.getRateDate())
+				.requestUserId(starRateDto.getRequestUserId())
+				.sellerId(starRateDto.getSellerId())
 				.build();
 	}
 
@@ -88,6 +98,8 @@ public class StarRate {
 				.rate(rate)
 				.talentId(talentId)
 				.title(title)
+				.requestUserId(requestUserId)
+				.sellerId(sellerId)
 				.build();
 		starRateCreated.publishAfterCommit();
 	}
